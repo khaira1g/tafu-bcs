@@ -1,9 +1,9 @@
-from solar import SolarMonitoringSystem, SolarPanel
-from smart_grid import SmartGrid, EnergySource, Consumer
-from carbon_footprint import CarbonFootprintCalculator, Activity
-from waste_management import WasteSortingSystem, WasteItem
-from irrigation import SmartIrrigationSystem, IrrigationZone
-from air_quality import AirQualityMonitoringSystem, AirQualitySensor
+from main.solar import SolarMonitoringSystem, SolarPanel
+from main.smart_grid import SmartGrid, EnergySource, Consumer
+from main.carbon_footprint import CarbonFootprintCalculator, Activity
+from main.waste_management import WasteSortingSystem, WasteItem
+from main.irrigation import SmartIrrigationSystem, IrrigationZone
+from main.air_quality import AirQualityMonitoringSystem, AirQualitySensor
 
 def main():
     # Initialize Solar Monitoring System

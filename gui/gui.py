@@ -39,7 +39,8 @@ class EnvironmentalManagementSystemApp:
         self.start_timer()
         self.refresh_data()
 
-    def update_label(self, label, text):
+    @staticmethod
+    def update_label(label, text):
         label.config(text=text)
 
     def setup_solar_monitoring(self):
@@ -247,5 +248,5 @@ class EnvironmentalManagementSystemApp:
 
 def run_gui():
     root = tk.Tk()
-    app = EnvironmentalManagementSystemApp(root)
+    EnvironmentalManagementSystemApp(root)
     root.mainloop()

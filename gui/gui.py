@@ -28,11 +28,17 @@ class EnvironmentalManagementSystemApp:
         self.setup_forest_monitoring()
 
         # Timer Label
-        self.timer_label = tk.Label(root, text=f"Next refresh in: {self.remaining_time} seconds", font=("Arial", 12))
+        self.timer_label = tk.Label(
+            root,
+            text=f"Next refresh in: {self.remaining_time} seconds",
+            font=("Arial", 12),
+        )
         self.timer_label.pack()
 
         # Refresh Now Button
-        self.refresh_button = tk.Button(root, text="Refresh Now", command=self.refresh_now)
+        self.refresh_button = tk.Button(
+            root, text="Refresh Now", command=self.refresh_now
+        )
         self.refresh_button.pack()
 
         # Start the timer and refresh data
@@ -59,7 +65,9 @@ class EnvironmentalManagementSystemApp:
         results = []
         for panel in self.solar_monitoring_system.solar_panels:
             panel.generate_energy()
-            results.append(f"Panel {panel.id} at {panel.location} generated {panel.energy_generated:.2f} kWh")
+            results.append(
+                f"Panel {panel.id} at {panel.location} generated {panel.energy_generated:.2f} kWh"
+            )
         self.update_label(self.solar_result_label, "\n".join(results))
 
     def setup_smart_grid(self):
@@ -79,8 +87,12 @@ class EnvironmentalManagementSystemApp:
         self.smart_grid_result_label.pack()
 
     def balance_load(self):
-        total_energy = sum(source.energy_generated for source in self.smart_grid.energy_sources)
-        total_consumption = sum(consumer.energy_needed for consumer in self.smart_grid.consumers)
+        total_energy = sum(
+            source.energy_generated for source in self.smart_grid.energy_sources
+        )
+        total_consumption = sum(
+            consumer.energy_needed for consumer in self.smart_grid.consumers
+        )
         if total_energy >= total_consumption:
             result = "Energy supply meets demand."
         else:
@@ -90,7 +102,9 @@ class EnvironmentalManagementSystemApp:
     def setup_carbon_footprint(self):
         carbon_frame = tk.Frame(self.root, padx=10, pady=10)
         carbon_frame.pack(fill=tk.BOTH, expand=True)
-        tk.Label(carbon_frame, text="Carbon Footprint Calculator", font=("Arial", 16)).pack()
+        tk.Label(
+            carbon_frame, text="Carbon Footprint Calculator", font=("Arial", 16)
+        ).pack()
         self.carbon_calculator = CarbonFootprintCalculator()
         activity1 = Activity(name="Driving", emissions=150)
         activity2 = Activity(name="Flying", emissions=300)
@@ -100,8 +114,13 @@ class EnvironmentalManagementSystemApp:
         self.carbon_result_label.pack()
 
     def calculate_footprint(self):
-        total_emissions = sum(activity.emissions for activity in self.carbon_calculator.activities)
-        self.update_label(self.carbon_result_label, f"Total Carbon Footprint: {total_emissions:.2f} kg CO2")
+        total_emissions = sum(
+            activity.emissions for activity in self.carbon_calculator.activities
+        )
+        self.update_label(
+            self.carbon_result_label,
+            f"Total Carbon Footprint: {total_emissions:.2f} kg CO2",
+        )
 
     def setup_waste_management(self):
         waste_frame = tk.Frame(self.root, padx=10, pady=10)
@@ -120,13 +139,17 @@ class EnvironmentalManagementSystemApp:
     def display_bins(self):
         results = []
         for bin_type, items in self.waste_sorting_system.waste_bins.items():
-            results.append(f"{bin_type.capitalize()} Bin: {[item.id for item in items]}")
+            results.append(
+                f"{bin_type.capitalize()} Bin: {[item.id for item in items]}"
+            )
         self.update_label(self.waste_result_label, "\n".join(results))
 
     def setup_irrigation(self):
         irrigation_frame = tk.Frame(self.root, padx=10, pady=10)
         irrigation_frame.pack(fill=tk.BOTH, expand=True)
-        tk.Label(irrigation_frame, text="Smart Irrigation System", font=("Arial", 16)).pack()
+        tk.Label(
+            irrigation_frame, text="Smart Irrigation System", font=("Arial", 16)
+        ).pack()
         self.irrigation_system = SmartIrrigationSystem()
         irrigation_zone1 = IrrigationZone(id=1, moisture_level=20)
         irrigation_zone2 = IrrigationZone(id=2, moisture_level=40)
@@ -146,7 +169,9 @@ class EnvironmentalManagementSystemApp:
     def setup_air_quality(self):
         air_quality_frame = tk.Frame(self.root, padx=10, pady=10)
         air_quality_frame.pack(fill=tk.BOTH, expand=True)
-        tk.Label(air_quality_frame, text="Air Quality Monitoring System", font=("Arial", 16)).pack()
+        tk.Label(
+            air_quality_frame, text="Air Quality Monitoring System", font=("Arial", 16)
+        ).pack()
         self.air_quality_system = AirQualityMonitoringSystem()
         air_sensor1 = AirQualitySensor(id=1, location="City Center")
         air_sensor2 = AirQualitySensor(id=2, location="Suburbs")
@@ -159,13 +184,19 @@ class EnvironmentalManagementSystemApp:
         results = []
         for sensor in self.air_quality_system.sensors:
             sensor.measure_air_quality()
-            results.append(f"Sensor {sensor.id} at {sensor.location} reports AQI: {sensor.air_quality_index}")
+            results.append(
+                f"Sensor {sensor.id} at {sensor.location} reports AQI: {sensor.air_quality_index}"
+            )
         self.update_label(self.air_quality_result_label, "\n".join(results))
 
     def setup_ev_charging(self):
         ev_charging_frame = tk.Frame(self.root, padx=10, pady=10)
         ev_charging_frame.pack(fill=tk.BOTH, expand=True)
-        tk.Label(ev_charging_frame, text="EV Charging Station Management System", font=("Arial", 16)).pack()
+        tk.Label(
+            ev_charging_frame,
+            text="EV Charging Station Management System",
+            font=("Arial", 16),
+        ).pack()
         self.ev_charging_station = EVChargingStation()
         ev1 = EV(id=1, battery_level=20)
         ev2 = EV(id=2, battery_level=50)
@@ -185,7 +216,11 @@ class EnvironmentalManagementSystemApp:
     def setup_smart_home(self):
         smart_home_frame = tk.Frame(self.root, padx=10, pady=10)
         smart_home_frame.pack(fill=tk.BOTH, expand=True)
-        tk.Label(smart_home_frame, text="Smart Home Energy Management System", font=("Arial", 16)).pack()
+        tk.Label(
+            smart_home_frame,
+            text="Smart Home Energy Management System",
+            font=("Arial", 16),
+        ).pack()
         self.smart_home = SmartHomeEnergyManagement()
         appliance1 = Appliance(id=1, energy_usage=100)
         appliance2 = Appliance(id=2, energy_usage=200)
@@ -195,17 +230,23 @@ class EnvironmentalManagementSystemApp:
         self.smart_home_result_label.pack()
 
     def optimize_energy_usage(self):
-        total_usage = sum(appliance.energy_usage for appliance in self.smart_home.appliances)
+        total_usage = sum(
+            appliance.energy_usage for appliance in self.smart_home.appliances
+        )
         results = [f"Total energy usage: {total_usage}W"]
         for appliance in self.smart_home.appliances:
             appliance.turn_on()
-            results.append(f"Appliance {appliance.id} turned on. Energy usage: {appliance.energy_usage}W")
+            results.append(
+                f"Appliance {appliance.id} turned on. Energy usage: {appliance.energy_usage}W"
+            )
         self.update_label(self.smart_home_result_label, "\n".join(results))
 
     def setup_forest_monitoring(self):
         forest_monitoring_frame = tk.Frame(self.root, padx=10, pady=10)
         forest_monitoring_frame.pack(fill=tk.BOTH, expand=True)
-        tk.Label(forest_monitoring_frame, text="Forest Monitoring System", font=("Arial", 16)).pack()
+        tk.Label(
+            forest_monitoring_frame, text="Forest Monitoring System", font=("Arial", 16)
+        ).pack()
         self.forest_monitoring_system = ForestMonitoringSystem()
         forest_sensor1 = ForestSensor(id=1, location="Amazon")
         forest_sensor2 = ForestSensor(id=2, location="Congo")
@@ -218,7 +259,9 @@ class EnvironmentalManagementSystemApp:
         results = []
         for sensor in self.forest_monitoring_system.sensors:
             sensor.measure_deforestation()
-            results.append(f"Sensor {sensor.id} at {sensor.location} reports deforestation rate: {sensor.deforestation_rate:.2f}")
+            results.append(
+                f"Sensor {sensor.id} at {sensor.location} reports deforestation rate: {sensor.deforestation_rate:.2f}"
+            )
         self.update_label(self.forest_monitoring_result_label, "\n".join(results))
 
     def refresh_data(self):
@@ -239,12 +282,15 @@ class EnvironmentalManagementSystemApp:
 
     def start_timer(self):
         if self.remaining_time > 0:
-            self.update_label(self.timer_label, f"Next refresh in: {self.remaining_time} seconds")
+            self.update_label(
+                self.timer_label, f"Next refresh in: {self.remaining_time} seconds"
+            )
             self.remaining_time -= 1
             self.root.after(1000, self.start_timer)
         else:
             self.remaining_time = self.refresh_interval // 1000
             self.start_timer()
+
 
 def run_gui():
     root = tk.Tk()
